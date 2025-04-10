@@ -14,7 +14,7 @@
 #     timeout : 60
 #     memorySize: 128
 
-sservice: serverless-lambda
+service: serverless-lambda
 frameworkVersion: "3"
 
 provider:
@@ -23,8 +23,8 @@ provider:
   stage: dev
   region: us-east-1
   environment:
-    NEW_RELIC_ACCOUNT_ID: 6597619  # 🔁 Replace with your actual New Relic Account ID
-    NEW_RELIC_LICENSE_KEY: 17a504ab2265ba4491004b182d3dd82bFFFFNRAL # 🔁 Replace with your actual license key
+    NEW_RELIC_ACCOUNT_ID: ${env:NEW_RELIC_ACCOUNT_ID}
+    NEW_RELIC_LICENSE_KEY: ${env:NEW_RELIC_LICENSE_KEY}
     NEW_RELIC_EXTENSION_SEND_FUNCTION_LOGS: true
     NEW_RELIC_LOG_LEVEL: info
     NEW_RELIC_APP_NAME: serverless-lambda-${self:provider.stage}
