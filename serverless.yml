@@ -1,4 +1,20 @@
-service: serverless-lambda
+# service: serverless-lambda
+# frameworkVersion: "3"
+
+# provider:
+#   name: aws
+#   runtime: nodejs18.x
+#   stage: dev
+#   region: us-east-1
+
+
+# functions:
+#   generateRandonNumbergit:
+#     handler: src/handler.generateRandonNumber
+#     timeout : 60
+#     memorySize: 128
+
+sservice: serverless-lambda
 frameworkVersion: "3"
 
 provider:
@@ -6,10 +22,21 @@ provider:
   runtime: nodejs18.x
   stage: dev
   region: us-east-1
-
+  environment:
+    NEW_RELIC_ACCOUNT_ID: 6597619  # 🔁 Replace with your actual New Relic Account ID
+    NEW_RELIC_LICENSE_KEY: 17a504ab2265ba4491004b182d3dd82bFFFFNRAL # 🔁 Replace with your actual license key
+    NEW_RELIC_EXTENSION_SEND_FUNCTION_LOGS: true
+    NEW_RELIC_LOG_LEVEL: info
+    NEW_RELIC_APP_NAME: serverless-lambda-${self:provider.stage}
+    NEW_RELIC_LAMBDA_HANDLER: newrelic-lambda-wrapper.handler
 
 functions:
-  generateRandonNumber:
+  generateRandonNumbergit:
     handler: src/handler.generateRandonNumber
-    timeout : 60
+    timeout: 60
     memorySize: 128
+    layers:
+      - arn:aws:lambda:us-east-1:451483290750:layer:NewRelicNodeJS18X:92
+
+plugins:
+  - serverless-newrelic-lambda-layers
