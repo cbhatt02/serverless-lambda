@@ -9,7 +9,7 @@ provider:
 
 
 functions:
-  hello:
-    handler: src/handler.generateRandonNumbergit status
+  generateRandonNumber:
+    handler: src/handler.generateRandonNumber
     timeout : 60
     memorySize: 128
