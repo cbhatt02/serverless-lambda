@@ -16,5 +16,8 @@
     "url": "https://github.com/cbhatt02/serverless-lambda/issues"
   },
   "homepage": "https://github.com/cbhatt02/serverless-lambda#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "serverless-newrelic-lambda-layers": "^5.7.0"
+  }
 }
