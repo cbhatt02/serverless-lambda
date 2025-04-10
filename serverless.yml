@@ -10,4 +10,6 @@ provider:
 
 functions:
   hello:
-    handler: src/handler.generateRandonNumber
+    handler: src/handler.generateRandonNumbergit status
+    timeout : 60
+    memorySize: 128
